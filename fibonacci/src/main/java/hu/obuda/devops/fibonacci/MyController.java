@@ -14,10 +14,15 @@ public class MyController {
     MyService service;
     
     @GetMapping("/fibonacci/{n}")
-    public String Fibonacci(@PathVariable("n") Integer n )
+    public String Fibonacci(@PathVariable("n") int n )
     {
         ArrayList<Integer> values = this.service.GetFibonaccis(n);
 
-        
+        String html ="";
+        for(int i=1; i<n; i++){
+            html+="f("+i+") = "+values.get(i-1)+"\n";
+        }
+
+        return html;
     }
 }
